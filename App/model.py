@@ -87,8 +87,10 @@ def addYearTree (catalog, row):
     """
     yearText= row['Start_Time']
     if row['Start_Time']:
-        yearText=row['Start_Time']     
-    year = strToDate(yearText,'%Y-%m-%d %H:%M:%S')
+        yearText=row['Start_Time']
+        yourText.split(' ')   
+        yourText= yourText[0]
+    year = strToDate(yearText,'%Y-%m-%d')
     yearNode = tree.get(catalog['yearsTree'] , year, greater)
     if yearNode:
         intRating = round(float(row['Severity']))
@@ -127,7 +129,7 @@ def getBookByYearRating (catalog, year,Severity ):
     """
     Retorna la cantidad de libros para un año y con un rating dado
     """
-    yearElement=tree.get(catalog['yearsTree'], strToDate(year,'%Y-%m-%d %H:%M:%S'), greater)
+    yearElement=tree.get(catalog['yearsTree'], strToDate(year,'%Y-%m-%d'), greater)
     response=''
     if yearElement:
         response= map.get(yearElement['ratingMap'], Severity, compareByKey)
