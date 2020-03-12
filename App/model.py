@@ -68,8 +68,8 @@ def addBookTree (catalog, row):
     Adiciona libro al tree con key=title
     """
     book = newBook(row)
-    #catalog['booksTitleTree'] = tree.put(catalog['booksTitleTree'], int(book['book_id']), book, greater)
-    catalog['booksTitleTree']  = tree.put(catalog['booksTitleTree'] , book['title'], book, greater)
+    catalog['booksTitleTree'] = tree.put(catalog['booksTitleTree'], int(book['book_id']), book, greater)
+    #catalog['booksTitleTree']  = tree.put(catalog['booksTitleTree'] , book['title'], book, greater)
 
 def newYear (year, row):
     """
