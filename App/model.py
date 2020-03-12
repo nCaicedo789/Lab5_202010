@@ -130,7 +130,7 @@ def getBookByYearRating (catalog, year,Severity ):
     yearElement=tree.get(catalog['yearsTree'], strToDate(year,'%Y/%m/%d %H:%M:%S'), greater)
     response=''
     if yearElement:
-        response= map.get(yearElemet, Severity, compareByKey)
+        response= map.get(yearElement, Severity, compareByKey)
         return response
     return None
 
