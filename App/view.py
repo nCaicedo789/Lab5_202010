@@ -107,13 +107,13 @@ def main():
             else:
                 print("No se encontraron libro para el año",year)
         elif int(inputs[0])==6:
-            year = input("Ingrese la fecha a consultar:")
-            Severity= input('ingrese la severidad')
+            year = input("Ingrese la fecha a consultar: ")
+            Severity= input('ingrese la severidad: ')
             response = controller.getBookByYearRating(catalog, year, int(Severity)) 
             if response:
                 print('En la fecha '+ str(year)+ 'se presentaron '+ str(response)+ 'accidentes de severidad'+ str(Severity))
             else:
-                print("No se encontraron libro para el año",year)    
+                print("No se encontraron accidentes para la fecha",year)    
         else:
             sys.exit(0)
     sys.exit(0)
