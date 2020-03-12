@@ -88,7 +88,7 @@ def addYearTree (catalog, row):
     yearText= row['Start_Time']
     if row['Start_Time']:
         yearText=row['Start_Time']
-        yourText.split(' ')   
+        yourText=yourText.split(' ')   
         yourText= yourText[0]
     year = strToDate(yearText,'%Y-%m-%d')
     yearNode = tree.get(catalog['yearsTree'] , year, greater)
