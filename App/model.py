@@ -123,14 +123,14 @@ def selectBookTree (catalog, pos):
     """
     return tree.select(catalog['booksTitleTree'], pos) 
 
-def getBookByYearRating (catalog, year):
+def getBookByYearRating (catalog, year,Severity ):
     """
     Retorna la cantidad de libros para un año y con un rating dado
     """
     yearElement=tree.get(catalog['yearsTree'], strToDate(year,'%Y/%m/%d %H:%M:%S'), greater)
     response=''
     if yearElement:
-        
+        response= map.get(yearElemet, Severity, compareByKey)
         return response
     return None
 

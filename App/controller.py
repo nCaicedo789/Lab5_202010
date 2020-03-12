@@ -122,9 +122,9 @@ def selectBookTree(catalog, pos):
     print("Tiempo de ejecución buscar libro (rank):",t1_stop-t1_start," segundos")   
     return rank
 
-def getBookByYearRating (catalog, year):
+def getBookByYearRating (catalog, year, Severity):
     t1_start = process_time() #tiempo inicial
-    resp = model.getBookByYearRating(catalog, year)
+    resp = model.getBookByYearRating(catalog, year, Severity)
     t1_stop = process_time() #tiempo final
     print("Tiempo de ejecución consultar libros por año:",t1_stop-t1_start," segundos")   
     return resp
