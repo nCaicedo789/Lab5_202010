@@ -77,7 +77,7 @@ def newYear (year, row):
     """
     yearNode = {"year": year, "ratingMap":None,}
     yearNode ['ratingMap'] = map.newMap(11,maptype='CHAINING')
-    intRating = round(float(row['average_rating']))
+    intRating = round(float(row['Severity']))
     map.put(yearNode['ratingMap'],intRating, 1, compareByKey)
     return yearNode
 
