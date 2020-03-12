@@ -52,7 +52,7 @@ def newBook (row):
     """
     Crea una nueva estructura para almacenar un libro 
     """
-    book = {"book_id": row['book_id'], "title":row['title'], "average_rating":row['average_rating'], "ratings_count":row['ratings_count']}
+    book = {"ID": row['ID'], "Severity":row['Severity'], "Start_Time":row['Start_Time']}
     return book
 
 def addBookList (catalog, row):
@@ -68,8 +68,8 @@ def addBookTree (catalog, row):
     Adiciona libro al tree con key=title
     """
     book = newBook(row)
-    catalog['booksTitleTree'] = tree.put(catalog['booksTitleTree'], int(book['book_id']), book, greater)
-    #catalog['booksTitleTree']  = tree.put(catalog['booksTitleTree'] , book['title'], book, greater)
+    #catalog['booksTitleTree'] = tree.put(catalog['booksTitleTree'], int(book['book_id']), book, greater)
+    catalog['booksTitleTree']  = tree.put(catalog['booksTitleTree'] , book['Start_Time'], book, greater)
 
 def newYear (year, row):
     """
@@ -85,13 +85,13 @@ def addYearTree (catalog, row):
     """
     Adiciona el libro al arbol anual key=original_publication_year
     """
-    yearText= row['original_publication_year']
-    if row['original_publication_year']:
-        yearText=row['original_publication_year'][0:row['original_publication_year'].index('.')]     
-    year = strToDate(yearText,'%Y')
+    yearText= row['Start_Time']
+    if row['Start_Time']:
+        yearText=row['Start_Time']     
+    year = strToDate(yearText,'%Y/%m/%d %H:%M:%S')
     yearNode = tree.get(catalog['yearsTree'] , year, greater)
     if yearNode:
-        intRating = round(float(row['average_rating']))
+        intRating = round(float(row['Severity']))
         ratingCount = map.get(yearNode['ratingMap'], intRating, compareByKey)
         if  ratingCount:
             ratingCount+=1
@@ -127,14 +127,10 @@ def getBookByYearRating (catalog, year):
     """
     Retorna la cantidad de libros para un año y con un rating dado
     """
-    yearElement=tree.get(catalog['yearsTree'], strToDate(year,'%Y'), greater)
+    yearElement=tree.get(catalog['yearsTree'], strToDate(year,'%Y/%m/%d %H:%M:%S'), greater)
     response=''
     if yearElement:
-        ratingList = map.keySet(yearElement['ratingMap'])
-        iteraRating=it.newIterator(ratingList)
-        while it.hasNext(iteraRating):
-            ratingKey = it.next(iteraRating)
-            response += 'Rating '+str(ratingKey) + ':' + str(map.get(yearElement['ratingMap'],ratingKey,compareByKey)) + '\n'
+        
         return response
     return None
 

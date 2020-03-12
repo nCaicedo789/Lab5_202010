@@ -45,6 +45,7 @@ def printMenu():
     print("3- Consultar cuantos libros hay alfabeticamente menores a una llave (titulo) - (rank)")
     print("4- Buscar un libro por posición de la llave (titulo) - (select)")
     print("5- Consultar la cantidad de libros por rating para un año (YYYY) dado")
+    print('6- req 2')
     print("0- Salir")
 
 
@@ -104,7 +105,14 @@ def main():
             if response:
                 print(response)
             else:
-                print("No se encontraron libro para el año",year)   
+                print("No se encontraron libro para el año",year)
+        elif int(inputs[0])==6:
+            year = input("Ingrese la fecha a consultar:")
+            response = controller.getBookByYearRating(catalog, year) 
+            if response:
+                print(response)
+            else:
+                print("No se encontraron libro para el año",year)    
         else:
             sys.exit(0)
     sys.exit(0)
