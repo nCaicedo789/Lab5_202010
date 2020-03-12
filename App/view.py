@@ -111,7 +111,7 @@ def main():
             Severity= input('ingrese la severidad')
             response = controller.getBookByYearRating(catalog, year, int(Severity)) 
             if response:
-                print('En la fecha '+ year+ 'se presentaron '+ response+ 'accidentes de severidad'+ Severity)
+                print('En la fecha '+ str(year)+ 'se presentaron '+ str(response)+ 'accidentes de severidad'+ str(Severity))
             else:
                 print("No se encontraron libro para el año",year)    
         else:
